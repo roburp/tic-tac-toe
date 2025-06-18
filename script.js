@@ -92,8 +92,8 @@ const gameController = (() => {
         alert("Draw!");
       }, 50);
     } else {
-      displayController.renderBoard();
       switchPlayer();
+      displayController.renderBoard();
     }
   };
 
@@ -114,9 +114,11 @@ const gameController = (() => {
 
 const displayController = (() => {
   const boardContainer = document.querySelector(".gameboard");
+  const playerText = document.querySelector(".player-text");
 
   const renderBoard = (winningCombo = []) => {
     boardContainer.innerHTML = "";
+    playerText.innerHTML = `${gameController.getPlayer().name}'s turn`;
     gameBoard.getBoard().forEach((cell, index) => {
       const cellDiv = document.createElement("div");
       cellDiv.classList.add("box");
@@ -138,9 +140,9 @@ const displayController = (() => {
   return { renderBoard };
 })();
 
-displayController.renderBoard();
-
 const resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", () => {
   gameController.resetGame();
 });
+
+displayController.renderBoard();
