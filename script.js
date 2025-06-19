@@ -126,6 +126,8 @@ const displayController = (() => {
       cellDiv.dataset.index = index;
       cellDiv.textContent = cell;
 
+      if (cell !== "") cellDiv.classList.add("filled");
+
       if (winningCombo.includes(index)) {
         cellDiv.classList.add("highlight");
       }
